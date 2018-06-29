@@ -6,6 +6,7 @@
 package demonlp;
 
 import java.awt.Color;
+import java.awt.List;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,46 +31,45 @@ public class NLPDemoFrm extends javax.swing.JFrame {
     /**
      * Creates new form NLPDemoFrm
      */
-  
     public NLPDemoFrm() throws ClassNotFoundException, SQLException {
         initComponents();
         txtInputSentense.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 5));
-        txtPartOfSentence.setEditable(false); 
-       
+        txtPartOfSentence.setEditable(false);
+
     }
-    
-     public NLPDemoFrm(String username) throws ClassNotFoundException, SQLException {
+
+    public NLPDemoFrm(String username) throws ClassNotFoundException, SQLException {
         initComponents();
         lbUsername.setText(username);
     }
-    
+
     public JTextArea getTxtPartOfSentence() {
         return txtPartOfSentence;
     }
     DefaultListModel model = new DefaultListModel();
-    String[] partOfSentence     = null;
-    String[] subjectArray       = {"i","you","we","they","he","she","it"};
-    String[] tobeArray          = {"am","is","are"};
-    String[] auxilaryVerbArray  = {"do","does","did","have","has"};
-    String[] possessiveAdjArray = {"my","your","our","their","his","her","its"};
-    String[] objectArray        = {"me","you","us","them","him","her","it"};
-    
-    ArrayList<String> listSubject       = new ArrayList<>();
-    ArrayList<String> listObject        = new ArrayList<>();
-    ArrayList<String> listVerb          = new ArrayList<>();
-    ArrayList<String> listTobe          = new ArrayList<>();
-    ArrayList<String> listAuxilaryVerb  = new ArrayList<>();
-    ArrayList<String> listPossessiveAdj = new ArrayList<>();
-    
-    ArrayList<String> listAdj           = new ArrayList<>();
-    ArrayList<String> listAdv           = new ArrayList<>();
-    ArrayList<String> listConjunct      = new ArrayList<>();
-    ArrayList<String> listPrep          = new ArrayList<>();
-    ArrayList<String> listInterjection  = new ArrayList<>();
-    ArrayList<String> listNoun          = new ArrayList<>();
-    ArrayList<String> listPronoun       = new ArrayList<>();            
+    String[] partOfSentence = null;
+    String[] subjectArray = {"i", "you", "we", "they", "he", "she", "it"};
+    String[] tobeArray = {"am", "is", "are"};
+    String[] auxilaryVerbArray = {"do", "does", "did", "have", "has"};
+    String[] possessiveAdjArray = {"my", "your", "our", "their", "his", "her", "its"};
+    String[] objectArray = {"me", "you", "us", "them", "him", "her", "it"};
 
-    private void resetData(){
+    ArrayList<String> listSubject = new ArrayList<>();
+    ArrayList<String> listObject = new ArrayList<>();
+    ArrayList<String> listVerb = new ArrayList<>();
+    ArrayList<String> listTobe = new ArrayList<>();
+    ArrayList<String> listAuxilaryVerb = new ArrayList<>();
+    ArrayList<String> listPossessiveAdj = new ArrayList<>();
+
+    ArrayList<String> listAdj = new ArrayList<>();
+    ArrayList<String> listAdv = new ArrayList<>();
+    ArrayList<String> listConjunct = new ArrayList<>();
+    ArrayList<String> listPrep = new ArrayList<>();
+    ArrayList<String> listInterjection = new ArrayList<>();
+    ArrayList<String> listNoun = new ArrayList<>();
+    ArrayList<String> listPronoun = new ArrayList<>();
+
+    private void resetData() {
         txtInputSentense.setText("");
         txtInputSentense.requestFocus();
         txtPartOfSentence.setText("");
@@ -79,7 +79,8 @@ public class NLPDemoFrm extends javax.swing.JFrame {
         lstResult.setModel(model);
         clearAllList();
     }
-    private void clearAllList(){
+
+    private void clearAllList() {
         listAdj.clear();
         listAdv.clear();
         listAuxilaryVerb.clear();
@@ -94,58 +95,57 @@ public class NLPDemoFrm extends javax.swing.JFrame {
         listTobe.clear();
         listVerb.clear();
     }
-    
-    private String displayItemOfList(){
-    String strDisplayItem = "";
-        
-        if(!listSubject.isEmpty()){
-            strDisplayItem +=  "\n Subject: "+listSubject;
+
+    private String displayItemOfList() {
+        String strDisplayItem = "";
+
+        if (!listSubject.isEmpty()) {
+            strDisplayItem += "\n Subject: " + listSubject;
         }
-        if(!listObject.isEmpty()){
-            strDisplayItem += "\n Object:   "+listObject;
+        if (!listObject.isEmpty()) {
+            strDisplayItem += "\n Object:   " + listObject;
         }
-        if(!listVerb.isEmpty()){
-            strDisplayItem += "\n Verb: "+listVerb;
+        if (!listVerb.isEmpty()) {
+            strDisplayItem += "\n Verb: " + listVerb;
         }
-        if(!listTobe.isEmpty()){
-            strDisplayItem += "\n Tobe: "+listTobe;
+        if (!listTobe.isEmpty()) {
+            strDisplayItem += "\n Tobe: " + listTobe;
         }
-        if(!listAuxilaryVerb.isEmpty()){
-            strDisplayItem +="\n Auxilary verb:   "+listAuxilaryVerb;
+        if (!listAuxilaryVerb.isEmpty()) {
+            strDisplayItem += "\n Auxilary verb:   " + listAuxilaryVerb;
         }
-        if(!listPossessiveAdj.isEmpty()){
-            strDisplayItem += "\n Possessive adj:  "+listPossessiveAdj;
+        if (!listPossessiveAdj.isEmpty()) {
+            strDisplayItem += "\n Possessive adj:  " + listPossessiveAdj;
         }
-        if(!listAdj.isEmpty()){
-            strDisplayItem += "\n Adjective:    "+listAdj;
+        if (!listAdj.isEmpty()) {
+            strDisplayItem += "\n Adjective:    " + listAdj;
         }
-        if(!listAdv.isEmpty()){
-            strDisplayItem += "\n Adverb:   "+listAdv;
+        if (!listAdv.isEmpty()) {
+            strDisplayItem += "\n Adverb:   " + listAdv;
         }
-        if(!listNoun.isEmpty()){
-            strDisplayItem += "\n Noun: "+listNoun;
-        } 
-        if(!listPronoun.isEmpty()){
-            strDisplayItem += "\n Pronoun:  "+listPronoun;
+        if (!listNoun.isEmpty()) {
+            strDisplayItem += "\n Noun: " + listNoun;
         }
-        if(!listConjunct.isEmpty()){
-            strDisplayItem += "\n Conjunction:  "+listConjunct;
+        if (!listPronoun.isEmpty()) {
+            strDisplayItem += "\n Pronoun:  " + listPronoun;
         }
-        if(!listInterjection.isEmpty()){
-            strDisplayItem += "\n Interjection: "+listInterjection;
+        if (!listConjunct.isEmpty()) {
+            strDisplayItem += "\n Conjunction:  " + listConjunct;
         }
-        if(!listPrep.isEmpty()){
-            strDisplayItem +=  "\n Prepostion:  "+listPrep;
+        if (!listInterjection.isEmpty()) {
+            strDisplayItem += "\n Interjection: " + listInterjection;
         }
-        if(listSubject.isEmpty() && listNoun.isEmpty()){
+        if (!listPrep.isEmpty()) {
+            strDisplayItem += "\n Prepostion:  " + listPrep;
+        }
+        if (listSubject.isEmpty() && listNoun.isEmpty()) {
             strDisplayItem += "\n Your sentence missing Subject \n";
         }
-        if(listTobe.isEmpty() && listVerb.isEmpty()){
+        if (listTobe.isEmpty() && listVerb.isEmpty()) {
             strDisplayItem += "\n Your sentence missing Main Verb \n";
         }
         return strDisplayItem;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -328,113 +328,106 @@ public class NLPDemoFrm extends javax.swing.JFrame {
         String checkSequenceOfPart = "";
         String result = "";
 
-        
         //check is txtInputSentense null or not?
-        if(txtInputSentense.getText().equals("")){
-            JOptionPane.showConfirmDialog(rootPane,"Input Sentences is empty!","Caution",JOptionPane.CLOSED_OPTION);
-        } else{
-          //Step1: analysis sentence
+        if (txtInputSentense.getText().equals("")) {
+            JOptionPane.showConfirmDialog(rootPane, "Input Sentences is empty!", "Caution", JOptionPane.CLOSED_OPTION);
+        } else {
+            //Step1: analysis sentence
             // setup a word array from input sentence.
             String sentences = txtInputSentense.getText().toString();
-            partOfSentence = sentences.split(" "); 
-            
-            for(int i = 0; i < partOfSentence.length; i++){                              
-                        LogicHandles logicHandles = new LogicHandles();
-                        String strOriginal = logicHandles.checkTailOfWord(partOfSentence[i]);
-                        partOfSentence[i] = strOriginal;
-                        
-                        //check if word is Subject
-                        if(logicHandles.checkSpecialTypeWord(subjectArray, partOfSentence[i])){
-                            listSubject.add(partOfSentence[i]);
+            partOfSentence = sentences.split(" ");
+
+            for (int i = 0; i < partOfSentence.length; i++) {
+                LogicHandles logicHandles = new LogicHandles();
+                String strOriginal = logicHandles.checkTailOfWord(partOfSentence[i]);
+                String strTemp = partOfSentence[i];
+                partOfSentence[i] = strOriginal;
+
+                //check if word is Subject
+                if (logicHandles.checkSpecialTypeWord(subjectArray, partOfSentence[i])) {
+                    listSubject.add(partOfSentence[i]);
+                }
+                //check if word is tobe
+                if (logicHandles.checkSpecialTypeWord(tobeArray, partOfSentence[i])) {
+                    listTobe.add(partOfSentence[i]);
+                }
+                //check if word is auxilary verb
+                if (logicHandles.checkSpecialTypeWord(auxilaryVerbArray, partOfSentence[i])) {
+                    listAuxilaryVerb.add(partOfSentence[i]);
+                }
+                //check if word is possessive adjective 
+                if (logicHandles.checkSpecialTypeWord(possessiveAdjArray, partOfSentence[i])) {
+                    listPossessiveAdj.add(partOfSentence[i]);
+                }
+                //check if word is Object
+                if (logicHandles.checkSpecialTypeWord(objectArray, partOfSentence[i])) {
+                    listObject.add(partOfSentence[i]);
+                }
+                //check others word type in Dtabase.
+                try {
+                    DatabaseHandles db = new DatabaseHandles();
+
+                    //check if word is Verb
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.VERB)) {
+                        //partOfSentence[i] = strOriginal;
+                        listVerb.add(strTemp);
+                    }
+
+                    //check if word is Adjective
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.ADJECTIVE)) {
+                        listAdj.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Adverb
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.ADVERB)) {
+                        listAdv.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Conjunction
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.CONJUNCTION)) {
+                        listConjunct.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Interjection
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.INTERJECTION)) {
+                        listInterjection.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Noun
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.NOUN)) {
+                        listNoun.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Preposition
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.PREPOSITION)) {
+                        listPrep.add(partOfSentence[i]);
+                    }
+
+                    //check if word is Pronoun
+                    if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.PRONOUN)) {
+                        if (listObject.contains(partOfSentence[i])) {
+                            continue;
+                        } else {
+                            listPronoun.add(partOfSentence[i]);
                         }
-                        //check if word is tobe
-                        if(logicHandles.checkSpecialTypeWord(tobeArray, partOfSentence[i])){
-                            listTobe.add(partOfSentence[i]);
-                        }
-                        //check if word is auxilary verb
-                        if(logicHandles.checkSpecialTypeWord(auxilaryVerbArray, partOfSentence[i])){
-                            listAuxilaryVerb.add(partOfSentence[i]);
-                        }
-                        //check if word is possessive adjective 
-                        if(logicHandles.checkSpecialTypeWord(possessiveAdjArray, partOfSentence[i])){
-                            listPossessiveAdj.add(partOfSentence[i]);
-                        }
-                        //check if word is Object
-                        if(logicHandles.checkSpecialTypeWord(objectArray, partOfSentence[i])){
-                            listObject.add(partOfSentence[i]);
-                        } 
-                            //check others word type in Dtabase.
-                        try {
-                            DatabaseHandles db = new DatabaseHandles();
-                            
-                                //check if word is Verb
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.VERB)) {
-                                //partOfSentence[i] = strOriginal;
-                                listVerb.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Adjective
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.ADJECTIVE)) {
-                                listAdj.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Adverb
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.ADVERB)) {
-                                listAdv.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Conjunction
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.CONJUNCTION)) {
-                                listConjunct.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Interjection
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.INTERJECTION)) {
-                                listInterjection.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Noun
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.NOUN)) {
-                                listNoun.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Preposition
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.PREPOSITION)) {
-                                listPrep.add(partOfSentence[i]);
-                            }
-                            
-                                //check if word is Pronoun
-                            if (db.getWordTypeOf("entries", partOfSentence[i]).contains(CommonDefine.PRONOUN)) {
-                                if(listObject.contains(partOfSentence[i])){
-                                    continue;
-                                }else{
-                                    listPronoun.add(partOfSentence[i]);
-                                }
-                            }
-                        } catch (ClassNotFoundException ex) {
-                            Logger.getLogger(NLPDemoFrm.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(NLPDemoFrm.class.getName()).log(Level.SEVERE, null, ex);
-                        } 
-                            //check the sequence of sentense parts
-                        if((!logicHandles.isContainInList(partOfSentence[0], listSubject) && !logicHandles.isContainInList(partOfSentence[0], listNoun))
-                        || (!logicHandles.isContainInList(partOfSentence[1], listVerb) && !logicHandles.isContainInList(partOfSentence[1], listTobe))){
-                            checkSequenceOfPart = "Wrong Sentence \n";
-                            if(!listSubject.isEmpty()){  // In case sentence has Subject
-                                if(!listNoun.isEmpty() && !listVerb.isEmpty()){
-                                    
-                                }
-                            } else { //sentence do not has Subject
-                                
-                            }
-                           
-                        }
-                          else {
-                            checkSequenceOfPart = "Right Sentence \n";
-                            result = txtInputSentense.getText();
-                        }
+                    }
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(NLPDemoFrm.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NLPDemoFrm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //check the sequence of sentense parts
+                if ((!logicHandles.isContainInList(partOfSentence[0], listSubject) && !logicHandles.isContainInList(partOfSentence[0], listNoun))
+                        || (!logicHandles.isContainInList(partOfSentence[1], listVerb) && !logicHandles.isContainInList(partOfSentence[1], listTobe))) {
+                    checkSequenceOfPart = "Wrong Sentence \n";
+                        deleteNoun();
+                       result = checkNounOrObject();
+                } else {
+                    checkSequenceOfPart = "Right Sentence \n";
+                    result = txtInputSentense.getText();
+                }
             }
-                //to display part of sentence
+            //to display part of sentence
             txtPartOfSentence.setText(checkSequenceOfPart + displayItemOfList());
         }
         model.addElement(result);
@@ -447,18 +440,101 @@ public class NLPDemoFrm extends javax.swing.JFrame {
         // TODO add your handling code here
         String value = lstResult.getSelectedValue().toString();
         JOptionPane.showConfirmDialog(rootPane, value, "You mean:", JOptionPane.YES_NO_OPTION);
-        if(true){
+        if (true) {
             System.out.println("ok");
-            try {
-                LogicHandles.writeSentenceToFile();
-                JOptionPane.showConfirmDialog(rootPane,"Your result has been writen in inStream.txt!","Success",JOptionPane.CLOSED_OPTION);
-            } catch (IOException ex) {
-                Logger.getLogger(NLPDemoFrm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
+        } else {
+            System.out.println("not ok");
+        }
     }//GEN-LAST:event_lstResultMouseClicked
 
+    private String checkNounOrObject(){
+        if(listObject.size() != 0){
+            return showResultReWriteCaseObject();
+        } else{
+            return showResultReWriteCaseNoun();
+        }
+    }
     
+    private String showResultReWriteCaseNoun(){
+        String totalResult = "";
+        String strV = "";
+        if(listSubject.size() >0){
+            for (int indexS = 0; indexS < listSubject.size(); indexS++) {
+                String strS = listSubject.get(indexS);
+                if(listTobe.size() == 0){
+                    for (int indexV = 0; indexV < listVerb.size();indexV++){
+                        strV = listVerb.get(indexV);
+                    }
+                } else{
+                    for (int indexT = 0; indexT < listTobe.size();indexT++){
+                            strV = listTobe.get(indexT);
+                    }
+                }
+                for (int indexN = 0; indexN < listNoun.size();indexN++) {
+                    String strN = listNoun.get(indexN);
+                    totalResult = strS+" "+strV+" "+strN+" \n";
+                }
+            }
+        } else {
+            // ko co subject 
+            for(int indexN = 0; indexN < listNoun.size();indexN++) {
+                String strN = listNoun.get(indexN);
+                for(int indexV = 0; indexV < listVerb.size();indexV++) {
+                     strV = listVerb.get(indexV);
+                    for(int indexAdv = 0; indexAdv < listAdv.size(); indexAdv++) {
+                    String strO = listAdv.get(indexAdv);
+                    totalResult = strN+" "+strV+" "+listAdv+" \n";
+                    }
+                }
+            }     
+        }
+        
+         return totalResult;
+    }
+    
+    private String showResultReWriteCaseObject(){
+        String totalResult = "";
+        
+        
+            for(int indexS = 0; indexS < listSubject.size();indexS++) {
+                String strS = listSubject.get(indexS);
+                for(int indexV = 0; indexV < listVerb.size();indexV++) {
+                    String strV = listVerb.get(indexV);
+                    for(int indexO = 0; indexO < listObject.size(); indexO++) {
+                        String strO = listObject.get(indexO);
+                        totalResult = strS+" "+strV+" "+strO+" \n";
+                    }
+                }
+            }
+         return totalResult;
+    }
+    
+    private void deleteNoun() {
+        for (int i = 0; i < listNoun.size();i++) {
+            if(checkExistInVerb(listNoun.get(i)) || checkExistInTobe(listNoun.get(i))){
+                listNoun.remove(i);
+            }
+        } 
+    }
+    
+    private boolean checkExistInVerb(String str) {
+    
+        for (int i = 0; i < listVerb.size();i++) {
+            if(str == listVerb.get(i)){
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean checkExistInTobe(String str) {
+    
+        for (int i = 0; i < listTobe.size();i++) {
+            if(str == listTobe.get(i)){
+                return true;
+            }
+        }
+        return false;
+    }
     /**
      * @param args the command line arguments
      */
